@@ -1,8 +1,9 @@
 version: "3.2"
 
 services:
-
   api:
+    depends_on:
+      - store
     build: ./images/api
     ports:
       - 80:3000
