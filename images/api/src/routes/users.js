@@ -2,6 +2,14 @@ const express = require("express");
 const router = express.Router();
 const knex = require("../db/db");
 
+/**
+ * @route POST /users
+ * @group Users - User operations
+ * @param {string} username.body.required - username of the user
+ * @param {string} password.body.required - password of the user
+ * @returns {object} 201 - Newly created user object
+ * @returns {object} 500 - Error message
+ */
 router.post("/", async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -14,6 +22,12 @@ router.post("/", async (req, res) => {
   }
 });
 
+/**
+ * @route GET /users
+ * @group Users - User operations
+ * @returns {Array.<object>} 200 - Array of user objects
+ * @returns {object} 500 - Error message
+ */
 router.get("/", async (req, res) => {
   try {
     const users = await knex("users").select();
@@ -25,6 +39,14 @@ router.get("/", async (req, res) => {
   }
 });
 
+/**
+ * @route GET /users/{id}
+ * @group Users - User operations
+ * @param {number} id.path.required - ID of the user to retrieve
+ * @returns {object} 200 - User object
+ * @returns {object} 404 - User not found message
+ * @returns {object} 500 - Error message
+ */
 router.get("/:id", async (req, res) => {
   try {
     const user = await knex("users").where("id", req.params.id).first();
@@ -44,6 +66,15 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+/**
+ * @route PUT /users/{id}
+ * @group Users - User operations
+ * @param {number} id.path.required - ID of the user to update
+ * @param {string} username.body - New username of the user
+ * @param {string} password.body - New password of the user
+ * @returns {object} 200 - User updated message
+ * @returns {object} 500 - Error message
+ */
 router.put("/:id", async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -61,6 +92,13 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+/**
+ * @route DELETE /users/{id}
+ * @group Users - User operations
+ * @param {number} id.path.required - ID of the user to delete
+ * @returns {object} 200 - User deleted message
+ * @returns {object} 500 - Error message
+ */
 router.delete("/:id", async (req, res) => {
   try {
     await knex("users").where("id", req.params.id).del();
