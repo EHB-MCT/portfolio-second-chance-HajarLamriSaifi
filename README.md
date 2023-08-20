@@ -4,22 +4,34 @@
 
 **Quotes Poster** is a web app where you can login and post, as well as view various quotes.
 
+## Prerequisites
+
+Before you begin, ensure you have an or create a `.env` file in the root of your project with the following configuration:
+
+- POSTGRES_USER=admin
+- POSTGRES_PASSWORD=admin
+- POSTGRES_DB=quotes-db
+- POSTGRES_HOST_AUTH_METHOD=trust
+
 ## Getting Started
 
 1. **Clone the Repository**
-    ```bash
-    git clone https://github.com/EHB-MCT/portfolio-second-chance-HajarLamriSaifi.git
-    ```
+
+   ```bash
+   git clone https://github.com/EHB-MCT/portfolio-second-chance-HajarLamriSaifi.git
+   ```
 
 2. **Navigate to Project Directory**
-    ```bash
-    cd portfolio-second-chance-HajarLamriSaifi
-    ```
+
+   ```bash
+   cd portfolio-second-chance-HajarLamriSaifi
+   ```
 
 3. **Build and Start the App using Docker Compose**
-    ```bash
-    docker-compose up --build
-    ```
+
+   ```bash
+   docker-compose up --build
+   ```
 
 4. **Initialization Step**: After starting, navigate to `images/api/src/db/db.js` and save the file (`Cmd + S` or `Ctrl + S`). This step ensures the tables get created (Note: This is a workaround due to a known bug).
 
@@ -45,7 +57,6 @@
 - [Express.js](https://expressjs.com/)
 - [Jest](https://jestjs.io/en/)
 - [React](https://legacy.reactjs.org/docs/getting-started.html)
-
 
 ## License
 
