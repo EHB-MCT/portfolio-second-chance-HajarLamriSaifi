@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const checkDatabaseConnection = require("./db/dbCheck");
 const userRoutes = require("./routes/users");
-const quoteRoutes = require("./routes/quotes"); 
+const quoteRoutes = require("./routes/quotes");
 
 const PORT = process.env.PORT || 3000;
 const app = express();
