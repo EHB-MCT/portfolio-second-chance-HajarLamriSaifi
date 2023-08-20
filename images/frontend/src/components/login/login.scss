@@ -1,0 +1,71 @@
+$pastelgreen: #7CDBA1;
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 5% auto;
+  background-color: #f7f7f7;
+
+  h2 {
+    color: #333;
+    margin-bottom: 1.5em;
+  }
+
+  label {
+    font-weight: 500;
+    margin-bottom: 1em;
+    display: block;
+    width: 100%;
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 0.5em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      transition: border 0.2s;
+
+      &:focus {
+        border-color: $pastelgreen;
+        outline: none;
+        box-shadow: 0 0 5px rgba(124, 219, 161, 0.5); // Light shadow of pastel green
+      }
+    }
+  }
+
+  .error-message {
+    background-color: rgba(255, 0, 0, 0.1);
+    color: red;
+    padding: 10px;
+    border-radius: 4px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: $pastelgreen;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: darken($pastelgreen, 10%);
+    }
+
+    &:disabled {
+      background-color: lighten($pastelgreen, 30%);
+      cursor: not-allowed;
+    }
+  }
+}

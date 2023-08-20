@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const checkDatabaseConnection = require("./db/dbCheck");
 const userRoutes = require("./routes/users");
 const quoteRoutes = require("./routes/quotes");
+const cors = require("cors");
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -12,6 +13,9 @@ checkDatabaseConnection();
 
 // Use bodyParser middleware to parse incoming JSON requests
 app.use(bodyParser.json());
+
+// Use cors to allow cors policy
+app.use(cors());
 
 /**
  * @route GET /
