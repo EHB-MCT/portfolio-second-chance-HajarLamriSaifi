@@ -4,11 +4,25 @@ import QuoteForm from "../quotes/QuoteForm";
 import QuoteList from "../quotes/QuoteList";
 import "../main/main.scss";
 
+/**
+ * Main component that handles user session and displays either the login form or quotes.
+ *
+ * @component
+ *
+ * @example
+ * <Main />
+ */
 function Main() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userId, setUserId] = useState(null);
   const [username, setUsername] = useState("");
 
+  /**
+   * Load the login state and username from local storage when the component mounts.
+   * Sets appropriate state based on local storage values.
+   *
+   * @function
+   */
   useEffect(() => {
     const loggedIn = localStorage.getItem("isLoggedIn");
     if (loggedIn === "true") {
@@ -19,6 +33,11 @@ function Main() {
     }
   }, []);
 
+  /**
+   * Handles user logout. Resets states and clears the local storage values.
+   *
+   * @function
+   */
   const handleLogout = () => {
     setIsLoggedIn(false);
     setUserId(null);
@@ -45,7 +64,7 @@ function Main() {
         />
       )}
     </div>
-);
+  );
 }
 
 export default Main;

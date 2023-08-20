@@ -1,11 +1,30 @@
 import React, { useState } from "react";
 import "../login/login.scss";
 
+/**
+ * Login component for user authentication.
+ *
+ * @component
+ * @param {Object} props
+ * @param {function} props.setIsLoggedIn - Callback to set the login status.
+ * @param {function} props.setUserId - Callback to set the user's ID.
+ * @param {function} props.setUsername - Callback to set the username.
+ *
+ * @example
+ * <Login setIsLoggedIn={setIsLoggedIn} setUserId={setUserId} setUsername={setUsername} />
+ */
 function Login({ setIsLoggedIn, setUserId, setUsername }) {
   const [usernameInput, setUsernameInput] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  /**
+   * Handles the login procedure by making an API call.
+   * Sets appropriate state on successful/unsuccessful login.
+   *
+   * @async
+   * @function
+   */
   const handleLogin = async () => {
     try {
       const response = await fetch("http://localhost:80/users", {

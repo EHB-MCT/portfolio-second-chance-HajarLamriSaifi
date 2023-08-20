@@ -1,9 +1,26 @@
 import React, { useState } from "react";
 import "./quoteForm.scss";
 
+/**
+ * QuoteForm is a component that allows users to post a new quote.
+ *
+ * @component
+ * @param {string} userId - The ID of the logged-in user.
+ *
+ * @example
+ * <QuoteForm userId="12345" />
+ */
 function QuoteForm({ userId }) {
   const [quote, setQuote] = useState("");
 
+  /**
+   * Handles the quote submission.
+   * Makes an API call to post the quote. If successful, resets the quote input.
+   * If unsuccessful, shows an error alert.
+   *
+   * @async
+   * @function
+   */
   const handleQuoteSubmit = async () => {
     try {
       const response = await fetch("http://localhost:80/quotes", {

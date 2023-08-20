@@ -1,10 +1,24 @@
 import React, { useState, useEffect } from "react";
 import "./quoteList.scss";
 
+/**
+ * QuoteList is a component that fetches and displays a list of quotes.
+ *
+ * @component
+ *
+ * @example
+ * <QuoteList />
+ */
 function QuoteList() {
   const [quotes, setQuotes] = useState([]);
 
   useEffect(() => {
+    /**
+     * Fetches quotes from the backend and updates the state.
+     *
+     * @async
+     * @function
+     */
     const fetchQuotes = async () => {
       try {
         const response = await fetch("http://localhost:80/quotes");
