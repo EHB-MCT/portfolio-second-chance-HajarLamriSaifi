@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "../login/login.scss"
+import "../login/login.scss";
 
-function Login() {
+function Login({ setIsLoggedIn }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -19,8 +19,9 @@ function Login() {
       const data = await response.json();
 
       if (response.ok) {
-        // Handle the successful login logic here
         console.log("Logged in!", data);
+        setIsLoggedIn(true); 
+        localStorage.setItem("isLoggedIn", "true"); 
       } else {
         setError(data.message || "An error occurred.");
       }
