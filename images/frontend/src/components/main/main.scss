@@ -1,0 +1,33 @@
+$pastelgreen: #7cdba1;
+
+.main-container {
+  font-family: "Arial", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px;
+    padding: 10px;
+    background-color: darken($pastelgreen, 10%);
+    border-radius: 5px;
+  }
+
+  button {
+    background-color: darken($pastelgreen, 20%);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($pastelgreen, 25%);
+    }
+  }
+}

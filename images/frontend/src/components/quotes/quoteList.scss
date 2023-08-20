@@ -1,0 +1,28 @@
+$pastelgreen: #7CDBA1;
+
+.quote-list-container {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+
+  h2 {
+    text-align: center;
+    color: darken($pastelgreen, 15%);
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      background-color: darken($pastelgreen, 5%);
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 10px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+}

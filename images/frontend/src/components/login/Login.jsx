@@ -20,10 +20,11 @@ function Login({ setIsLoggedIn, setUserId, setUsername }) {
 
       if (response.ok) {
         setIsLoggedIn(true);
-        setUserId(data.user_id);
-        setUsername(data.username); 
+        setUserId(data.id);
+        setUsername(data.username);
+        console.log("Set username in Login:", data.username);
         localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem('username', data.username);
+        localStorage.setItem("username", data.username);
       } else {
         setError(data.message || "An error occurred.");
       }
@@ -64,4 +65,3 @@ function Login({ setIsLoggedIn, setUserId, setUsername }) {
 }
 
 export default Login;
-

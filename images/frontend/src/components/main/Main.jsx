@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Login from "../login/Login";
 import QuoteForm from "../quotes/QuoteForm";
+import QuoteList from "../quotes/QuoteList";
 import "../main/main.scss";
 
 function Main() {
@@ -12,29 +13,30 @@ function Main() {
     const loggedIn = localStorage.getItem("isLoggedIn");
     if (loggedIn === "true") {
       setIsLoggedIn(true);
-      setUsername(localStorage.getItem("username"));
+      const retrievedUsername = localStorage.getItem("username");
+      setUsername(retrievedUsername);
+      console.log("Username from localStorage in Main:", retrievedUsername);
     }
   }, []);
 
   const handleLogout = () => {
     setIsLoggedIn(false);
     setUserId(null);
-    setUsername(""); // Clear username
+    setUsername("");
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("username");
   };
 
   return (
-    <div>
+    <div className="main-container">
       {isLoggedIn ? (
-        <div>
+        <>
           <div className="header">
-            <span>Welcome, {username}!</span>
             <button onClick={handleLogout}>Logout</button>
           </div>
-          Main Content
           <QuoteForm userId={userId} />
-        </div>
+          <QuoteList />
+        </>
       ) : (
         <Login
           setIsLoggedIn={setIsLoggedIn}
@@ -43,7 +45,7 @@ function Main() {
         />
       )}
     </div>
-  );
+);
 }
 
 export default Main;

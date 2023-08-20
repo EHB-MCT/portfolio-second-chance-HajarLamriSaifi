@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./quoteForm.scss";
 
 function QuoteForm({ userId }) {
   const [quote, setQuote] = useState("");
@@ -19,17 +20,20 @@ function QuoteForm({ userId }) {
       if (!response.ok) {
         const data = await response.json();
         console.error("Error posting the quote:", data.message);
+        alert("Error posting the quote. Please try again.");
       } else {
         console.log("Quote posted successfully!");
-        setQuote(""); 
+        alert("Quote posted successfully! Please refresh the page to view it.");
+        setQuote("");
       }
     } catch (error) {
       console.error("Network error:", error);
+      alert("Network error. Please try again.");
     }
   };
 
   return (
-    <div>
+    <div className="quote-form-container">
       <h2>Post a Quote</h2>
       <div>
         <label>
