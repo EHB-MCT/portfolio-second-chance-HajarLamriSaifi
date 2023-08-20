@@ -12,6 +12,16 @@ services:
     environment:
       PG_CONNECTION_STRING: "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@store:5432/${POSTGRES_DB}"
 
+  frontend:
+    depends_on:
+      - api
+    build: ./images/frontend
+    container_name: frontend
+    ports:
+      - 8080:3000
+    volumes:
+      - ./images/frontend/src:/usr/src/app/src
+
   store:
     image: postgres:latest
     ports:
@@ -21,10 +31,12 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_HOST_AUTH_METHOD: ${POSTGRES_HOST_AUTH_METHOD}
-      
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}" ]
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"
+        ]
       interval: 10s
       timeout: 5s
       retries: 5
-

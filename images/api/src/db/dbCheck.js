@@ -2,11 +2,11 @@ const knex = require("./db");
 
 /**
  * Checks the database connection and applies the latest migrations.
- * 
+ *
  */
 const checkDatabaseConnection = () => {
   return knex.migrate
-    .latest() 
+    .latest()
     .then(() => {
       console.log("All migrations applied!");
       return knex.raw("SELECT 1+1 AS value"); // Test query to ensure database connection
@@ -17,7 +17,7 @@ const checkDatabaseConnection = () => {
       );
     })
     .catch((err) => {
-      console.error("Error connecting to the database", err); 
+      console.error("Error connecting to the database", err);
     });
 };
 
