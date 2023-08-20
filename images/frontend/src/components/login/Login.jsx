@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../login/login.scss";
 
-function Login({ setIsLoggedIn, setUserId }) {
-  const [username, setUsername] = useState("");
+function Login({ setIsLoggedIn, setUserId, setUsername }) {
+  const [usernameInput, setUsernameInput] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
@@ -13,15 +13,17 @@ function Login({ setIsLoggedIn, setUserId }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username: usernameInput, password }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
         setIsLoggedIn(true);
-        setUserId(data.user_id); 
+        setUserId(data.user_id);
+        setUsername(data.username); 
         localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem('username', data.username);
       } else {
         setError(data.message || "An error occurred.");
       }
@@ -39,8 +41,8 @@ function Login({ setIsLoggedIn, setUserId }) {
           Username:
           <input
             type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={usernameInput}
+            onChange={(e) => setUsernameInput(e.target.value)}
           />
         </label>
       </div>
@@ -62,3 +64,4 @@ function Login({ setIsLoggedIn, setUserId }) {
 }
 
 export default Login;
+
